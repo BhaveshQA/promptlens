@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – PromptLens | AI Photography Prompt Guides</title>
+<meta name="description" content="Guides, tutorials, and tips on writing better AI photography prompts for Midjourney, DALL-E, and Stable Diffusion.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .blog-layout { display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: flex-start; }
+
+  /* FEATURED POST */
+  .post-featured {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: box-shadow .2s;
+    cursor: pointer;
+  }
+  .post-featured:hover { box-shadow: 0 6px 28px rgba(0,0,0,.07); }
+  .post-featured-img {
+    background: linear-gradient(135deg, #1a1a18 0%, #2d6a4f 100%);
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+  }
+  .post-featured-body { padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+  .post-badge { font-size: 11px; font-weight: 500; background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+  .post-badge.hot { background: var(--trending-light); color: var(--trending); }
+  .post-featured-body h2 { font-family: var(--font-display); font-size: 22px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; letter-spacing: -0.4px; }
+  .post-featured-body p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 16px; }
+  .post-meta { font-size: 12px; color: var(--ink-light); display: flex; gap: 12px; align-items: center; }
+  .post-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* POST GRID */
+  .section-label { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+  .post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .post-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow .2s, border-color .2s;
+    cursor: pointer;
+  }
+  .post-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.06); border-color: #ccc; }
+  .post-card-img {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+  .img-green { background: linear-gradient(135deg, #1b4332, #2d6a4f); }
+  .img-warm { background: linear-gradient(135deg, #7c2d12, #b5451b); }
+  .img-blue { background: linear-gradient(135deg, #0c2a4a, #1d5fa4); }
+  .img-purple { background: linear-gradient(135deg, #2d1b5e, #6b3fa4); }
+  .img-teal { background: linear-gradient(135deg, #0d3b2e, #1d8a6a); }
+  .img-gold { background: linear-gradient(135deg, #4a2800, #b57a17); }
+
+  .post-card-body { padding: 16px; }
+  .post-card-body .post-badge { margin-bottom: 8px; }
+  .post-card-body h3 { font-family: var(--font-display); font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 7px; }
+  .post-card-body p { font-size: 12.5px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 10px; }
+  .post-card-body .post-meta { font-size: 11.5px; }
+
+  .read-more { font-size: 12.5px; font-weight: 500; color: var(--accent); text-decoration: none; }
+  .read-more:hover { text-decoration: underline; }
+
+  /* LIST POSTS */
+  .post-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+  .post-list-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--surface);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .post-list-item:first-child { padding-top: 0; }
+  .post-list-item:last-child { border-bottom: none; }
+  .post-list-num { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--border); line-height: 1; flex-shrink: 0; min-width: 28px; padding-top: 2px; }
+  .post-list-body h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; line-height: 1.4; }
+  .post-list-body h3:hover { color: var(--accent); }
+  .post-list-body .post-meta { font-size: 11.5px; }
+
+  /* SIDEBAR */
+  .blog-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .sidebar-widget { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .widget-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+  .category-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cpill { font-size: 12.5px; padding: 5px 12px; background: var(--tag-bg); border-radius: 20px; color: var(--ink-mid); cursor: pointer; border: 1px solid transparent; transition: all .15s; }
+  .cpill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+  .nl-sidebar { background: var(--ink); border-radius: var(--radius); padding: 20px; color: #fff; }
+  .nl-sidebar h3 { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .nl-sidebar p { font-size: 12.5px; opacity: .7; margin-bottom: 14px; line-height: 1.6; }
+  .nl-input { width: 100%; padding: 9px 12px; border-radius: 6px; border: none; font-size: 13px; font-family: var(--font-body); background: rgba(255,255,255,.12); color: #fff; margin-bottom: 8px; outline: none; }
+  .nl-input::placeholder { color: rgba(255,255,255,.45); }
+  .nl-btn { width: 100%; padding: 9px; background: var(--accent); color: #fff; border: none; border-radius: 6px; font-size: 13.5px; font-weight: 500; cursor: pointer; font-family: var(--font-body); transition: background .2s; }
+  .nl-btn:hover { background: #3a8a63; }
+
+  .ad-sidebar-box { background: #fff; border: 1.5px dashed var(--border); border-radius: var(--radius); height: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-light); gap: 4px; }
+
+  .ad-inline { text-align: center; margin: 32px 0; }
+  .ad-placeholder { display: inline-flex; align-items: center; justify-content: center; width: 100%; max-width: 680px; height: 90px; border: 1.5px dashed var(--border); border-radius: 8px; font-size: 12px; color: var(--ink-light); gap: 8px; background: #fff; }
+  .ad-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--ink-light); margin-bottom: 6px; }
+
+  .pagination { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 32px; }
+  .page-btn { width: 36px; height: 36px; border-radius: 7px; border: 1px solid var(--border); background: #fff; color: var(--ink-mid); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .15s; font-family: var(--font-body); }
+  .page-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .page-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; } .blog-sidebar { display: none; } }
+  @media (max-width: 600px) { .post-featured { grid-template-columns: 1fr; } .post-featured-img { min-height: 140px; } .post-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">Prompt<span>Lens</span></a>
+    <nav>
+      <a href="index.html#trending">Trending</a>
+      <a href="index.html#essential">Essential</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html" class="nav-submit">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-wrap" style="max-width: 1100px;">
+
+  <div class="page-hero">
+    <h1>Blog & Guides</h1>
+    <p>In-depth tutorials, prompt breakdowns, and style guides to help you get the most out of AI photography tools.</p>
+  </div>
+
+  <div class="blog-layout">
+    <main>
+
+      <!-- FEATURED -->
+      <div class="post-featured" onclick="alert('Full article coming soon! Add your blog post content here.')">
+        <div class="post-featured-img">📸</div>
+        <div class="post-featured-body">
+          <span class="post-badge hot">🔥 Most Read</span>
+          <h2>The Complete Guide to AI Photography Prompts in 2025</h2>
+          <p>Everything you need to know about writing prompts that produce magazine-quality photography — from lighting language to camera specifications and colour grading.</p>
+          <div class="post-meta">
+            <span>✍️ Shreya Kapoor</span>
+            <span>📅 Jan 15, 2025</span>
+            <span>⏱ 12 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECENT POSTS -->
+      <div class="section-label">Recent Articles</div>
+      <div class="post-grid">
+
+        <div class="post-card" onclick="alert('Full article coming soon!')">
+          <div class="post-card-img img-green">🌄</div>
+          <div class="post-card-body">
+            <span class="post-badge">Landscape</span>
+            <h3>Golden Hour Prompts That Actually Work in Midjourney v6</h3>
+            <p>We tested 50 golden hour prompts so you don't have to. Here are the 10 that produce stunning results every time.</p>
+            <div class="post-meta">
+              <span>📅 Jan 10, 2025</span>
+              <span>⏱ 8 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card" onclick="alert('Full article coming soon!')">
+          <div class="post-card-img img-warm">🏙️</div>
+          <div class="post-card-body">
+            <span class="post-badge hot">Trending</span>
+            <h3>Night Street Photography Prompts: Neon, Rain & Urban Grit</h3>
+            <p>How to write prompts that capture the atmosphere of rainy Tokyo side streets, New York neon, and London fog.</p>
+            <div class="post-meta">
+              <span>📅 Jan 7, 2025</span>
+              <span>⏱ 6 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card" onclick="alert('Full article coming soon!')">
+          <div class="post-card-img img-blue">🎞️</div>
+          <div class="post-card-body">
+            <span class="post-badge">Film Simulation</span>
+            <h3>Film Stock Names That Transform Your AI Photography</h3>
+            <p>Kodak Portra 400. Fujifilm Velvia 50. Ilford HP5. Which film stock keywords work best and how to combine them.</p>
+            <div class="post-meta">
+              <span>📅 Jan 3, 2025</span>
+              <span>⏱ 7 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card" onclick="alert('Full article coming soon!')">
+          <div class="post-card-img img-purple">💡</div>
+          <div class="post-card-body">
+            <span class="post-badge">Lighting</span>
+            <h3>Lighting Language for AI: Rembrandt, Split, Butterfly & More</h3>
+            <p>Professional photographers use specific lighting terms. Here's exactly how to use them in AI prompts for dramatic results.</p>
+            <div class="post-meta">
+              <span>📅 Dec 28, 2024</span>
+              <span>⏱ 9 min</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- IN-FEED AD -->
+      <div class="ad-inline">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-placeholder">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          728×90 – Google AdSense (In-Feed)
+        </div>
+      </div>
+
+      <!-- MORE POSTS LIST -->
+      <div class="section-label">More Articles</div>
+      <div class="post-list">
+        <div class="post-list-item" onclick="alert('Article coming soon!')">
+          <div class="post-list-num">05</div>
+          <div class="post-list-body">
+            <h3>Midjourney vs DALL-E 3 vs Stable Diffusion: Which Handles Photography Prompts Best?</h3>
+            <div class="post-meta" style="color:var(--ink-light);font-size:12px;display:flex;gap:10px;margin-top:4px;">
+              <span>📅 Dec 20, 2024</span><span>⏱ 11 min</span><span class="post-badge" style="padding:1px 8px;">Comparison</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-list-item" onclick="alert('Article coming soon!')">
+          <div class="post-list-num">06</div>
+          <div class="post-list-body">
+            <h3>Macro Photography Prompts: Getting Insect-Eye Detail from AI</h3>
+            <div class="post-meta" style="color:var(--ink-light);font-size:12px;display:flex;gap:10px;margin-top:4px;">
+              <span>📅 Dec 15, 2024</span><span>⏱ 6 min</span><span class="post-badge" style="padding:1px 8px;">Macro</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-list-item" onclick="alert('Article coming soon!')">
+          <div class="post-list-num">07</div>
+          <div class="post-list-body">
+            <h3>How to Write Portrait Prompts That Capture Real Emotion</h3>
+            <div class="post-meta" style="color:var(--ink-light);font-size:12px;display:flex;gap:10px;margin-top:4px;">
+              <span>📅 Dec 10, 2024</span><span>⏱ 8 min</span><span class="post-badge" style="padding:1px 8px;">Portrait</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-list-item" onclick="alert('Article coming soon!')">
+          <div class="post-list-num">08</div>
+          <div class="post-list-body">
+            <h3>Astrophotography Prompts: Milky Way, Star Trails & Aurora</h3>
+            <div class="post-meta" style="color:var(--ink-light);font-size:12px;display:flex;gap:10px;margin-top:4px;">
+              <span>📅 Dec 5, 2024</span><span>⏱ 7 min</span><span class="post-badge" style="padding:1px 8px;">Night Sky</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-list-item" onclick="alert('Article coming soon!')">
+          <div class="post-list-num">09</div>
+          <div class="post-list-body">
+            <h3>The 30 Camera & Lens Specs That Improve AI Photo Quality Instantly</h3>
+            <div class="post-meta" style="color:var(--ink-light);font-size:12px;display:flex;gap:10px;margin-top:4px;">
+              <span>📅 Nov 28, 2024</span><span>⏱ 5 min</span><span class="post-badge" style="padding:1px 8px;">Tips</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">→</button>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar">
+
+      <div class="sidebar-widget">
+        <div class="widget-title">Browse by Category</div>
+        <div class="category-pills">
+          <span class="cpill">Portrait</span>
+          <span class="cpill">Landscape</span>
+          <span class="cpill">Street</span>
+          <span class="cpill">Macro</span>
+          <span class="cpill">Night Sky</span>
+          <span class="cpill">Fashion</span>
+          <span class="cpill">Food</span>
+          <span class="cpill">Lighting</span>
+          <span class="cpill">Film</span>
+          <span class="cpill">Tips</span>
+          <span class="cpill">Aerial</span>
+          <span class="cpill">Wildlife</span>
+        </div>
+      </div>
+
+      <div class="nl-sidebar">
+        <h3>Weekly Prompt Drop</h3>
+        <p>Fresh photography prompts every Monday. Join 2,000+ creators.</p>
+        <input class="nl-input" type="email" placeholder="your@email.com">
+        <button class="nl-btn">Subscribe Free</button>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="widget-title">Popular This Month</div>
+        <div class="post-list" style="margin:0;">
+          <div class="post-list-item" style="cursor:pointer;" onclick="alert('Article coming soon!')">
+            <div class="post-list-num">1</div>
+            <div class="post-list-body"><h3 style="font-size:13px;">Complete Guide to AI Photography Prompts</h3></div>
+          </div>
+          <div class="post-list-item" style="cursor:pointer;" onclick="alert('Article coming soon!')">
+            <div class="post-list-num">2</div>
+            <div class="post-list-body"><h3 style="font-size:13px;">Film Stock Names That Transform Your AI Photos</h3></div>
+          </div>
+          <div class="post-list-item" style="cursor:pointer;" onclick="alert('Article coming soon!')">
+            <div class="post-list-num">3</div>
+            <div class="post-list-body"><h3 style="font-size:13px;">30 Camera Specs That Improve Quality Instantly</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-sidebar-box">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>300×250</span>
+          <span style="font-size:11px;">AdSense Rectangle</span>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+  </div>
+  <p>© 2025 PromptLens · Built for AI photography creators</p>
+</footer>
+
+</body>
+</html>
