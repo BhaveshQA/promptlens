@@ -87,13 +87,14 @@
   function initNewsletterForms() {
     document.querySelectorAll('[data-newsletter]').forEach(function (form) {
       form.addEventListener('submit', function (e) {
+        if (form.hasAttribute('data-static-form')) return;
         e.preventDefault();
         const input = form.querySelector('input[type="email"]');
         if (!input || !input.value.trim() || !input.checkValidity()) {
           input && input.reportValidity();
           return;
         }
-        showToast('Thanks! Newsletter signup will be connected soon.');
+        showToast('Thanks! Your signup was received.');
         form.reset();
       });
     });
@@ -108,11 +109,37 @@
     });
   }
 
+  function initCopyBlocks() {
+    document.querySelectorAll('[data-copy-target]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const target = document.querySelector(btn.getAttribute('data-copy-target'));
+        const label = btn.querySelector('.copy-label') || btn;
+        const original = label.textContent;
+        if (!target) return;
+
+        copyText(target.textContent.trim())
+          .then(function () {
+            label.textContent = 'Copied!';
+            btn.classList.add('copied');
+            showToast('Prompt copied to clipboard');
+            window.setTimeout(function () {
+              label.textContent = original;
+              btn.classList.remove('copied');
+            }, 2000);
+          })
+          .catch(function () {
+            showToast('Copy failed — please select and copy manually');
+          });
+      });
+    });
+  }
+
   function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
 
     form.addEventListener('submit', function (e) {
+      if (form.hasAttribute('data-static-form')) return;
       e.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -210,6 +237,7 @@
     initCookieBanner();
     initNewsletterForms();
     initComingSoonLinks();
+    initCopyBlocks();
     initContactForm();
     initSearch();
   });

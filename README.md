@@ -4,12 +4,29 @@ Curated AI photography prompts for Midjourney, DALL-E, and Stable Diffusion.
 
 ## Local preview
 
+**Recommended** (from the project folder):
+
 ```bash
-python3 -m http.server 8080
-# open http://localhost:8080
+cd /Users/hbhavesr/Documents/BhaveshWork/promptlens
+chmod +x serve.sh
+./serve.sh
 ```
 
-Or: `npx serve .`
+Then open **http://127.0.0.1:8080/** in Chrome, Safari, or Firefox.
+
+**Important:**
+- Use `http://127.0.0.1:8080/` or `http://localhost:8080/` — not `https://`
+- Do not open `index.html` via Finder (the `file://` URL breaks some behavior)
+- If you see `Address already in use`, port 8080 is taken — either use the URL above (server may already be running) or run `./serve.sh 8081`
+
+**Manual start:**
+
+```bash
+cd /Users/hbhavesr/Documents/BhaveshWork/promptlens
+python3 -m http.server 8080 --bind 127.0.0.1
+```
+
+Or: `npx serve . -l 8080`
 
 ## Structure
 
@@ -21,6 +38,10 @@ Or: `npx serve .`
 ## Before launch
 
 1. Replace `https://promptlens.com` in canonical URLs and `sitemap.xml`
-2. Connect contact and newsletter forms (Formspree, Netlify Forms, etc.)
-3. Add your Google AdSense publisher ID when ready
-4. Publish real blog article pages and update blog links
+2. Deploy to Netlify or another static host
+3. Enable Netlify Forms so `newsletter` and `contact` submissions are collected
+4. Connect the newsletter form to Beehiiv, ConvertKit, MailerLite, Brevo, or Zapier
+5. Replace the `PromptLens Pro Pack` launch-notice link with your Gumroad or Lemon Squeezy product link
+6. Add real affiliate links only after joining the relevant partner programs
+7. Add your Google AdSense publisher ID after the site has real traffic and approval
+8. Verify the new article/category URLs in Google Search Console
