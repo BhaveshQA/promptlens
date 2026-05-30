@@ -27,6 +27,171 @@
 <script src="shared.js?v=5" defer></script>
 </head>
 <body>
-<!-- content pending -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo" aria-label="PromptLens home">Prompt<span>Lens</span></a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <a href="latest-prompts.html">Latest</a>
+      <a href="prompt-templates.html">Templates</a>
+      <a href="blog.html">Guides</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="nav-cta" aria-current="page">Submit Prompt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-wrap">
+
+    <div class="page-hero">
+      <h1>Get in Touch</h1>
+      <p>Submit a prompt, report a problem, ask a question, or just say hello. Every message is read personally.</p>
+    </div>
+
+    <div class="contact-layout">
+
+      <!-- FORM -->
+      <div class="form-card">
+        <h2>Send a message</h2>
+        <p style="font-size:14px;color:var(--ink-light);margin-bottom:24px">Typically respond within 1–2 business days.</p>
+
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Bhavesh" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Rathod" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cemail">Email Address</label>
+            <input type="email" id="cemail" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">What's this about?</label>
+            <select id="subject" name="subject">
+              <option value="">Select a topic…</option>
+              <option>Submit a prompt for review</option>
+              <option>Report incorrect / broken prompt</option>
+              <option>Advertising enquiry</option>
+              <option>Partnership or collaboration</option>
+              <option>Technical issue with the site</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us more…" required></textarea>
+          </div>
+          <button type="button" class="submit-btn" onclick="submitContactForm()">Send Message →</button>
+        </div>
+
+        <div class="form-success" id="successMsg" hidden>
+          <div class="success-icon" aria-hidden="true">✅</div>
+          <h3>Message sent!</h3>
+          <p>Thanks for reaching out. A reply will come within 1–2 business days at the email you provided.</p>
+        </div>
+      </div>
+
+      <!-- SIDEBAR INFO -->
+      <div class="info-sidebar">
+
+        <div class="info-card">
+          <h3 class="info-card-title">Contact Details</h3>
+          <div class="contact-item">
+            <div class="contact-icon ci-green" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>Email</strong>
+              <span>hello@promptlens.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon ci-orange" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>Response time</strong>
+              <span>1–2 business days</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon ci-blue" aria-hidden="true">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>Based in</strong>
+              <span>India · Remote</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3 class="info-card-title">Common Questions</h3>
+          <div class="faq-item">
+            <strong>How do I submit a prompt?</strong>
+            <p>Use the form, select "Submit a prompt for review" and paste your prompt in the message box. It gets tested and featured if it passes the quality bar.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Do you accept advertising?</strong>
+            <p>Yes. Select "Advertising enquiry" and a media kit will be sent over.</p>
+          </div>
+          <div class="faq-item">
+            <strong>Can I use prompts commercially?</strong>
+            <p>All prompts on PromptLens are free for personal and commercial use. No attribution required.</p>
+          </div>
+          <div class="faq-item">
+            <strong>How often are new prompts added?</strong>
+            <p>The site updates every Monday with new trending and community-submitted prompts.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTTOM AD -->
+    <div class="ad-inline" style="margin-top:40px" role="complementary" aria-label="Advertisement">
+      <div class="ad-label">Advertisement</div>
+      <div class="ad-placeholder" aria-hidden="true">728×90 – Google AdSense (Leaderboard)</div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="about.html">About</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+    <a href="index.html">Home</a>
+  </nav>
+  <p><small>© 2026 PromptLens · Built by Bhavesh Rathod for AI photography creators</small></p>
+</footer>
+
+<script>
+function submitContactForm() {
+  var email = document.getElementById('cemail').value.trim();
+  var message = document.getElementById('message').value.trim();
+  if (!email || !message) {
+    alert('Please fill in your email and message before sending.');
+    return;
+  }
+  document.getElementById('contactForm').style.display = 'none';
+  var s = document.getElementById('successMsg');
+  s.hidden = false;
+}
+</script>
+
 </body>
 </html>
