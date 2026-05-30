@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /thanks.html
 
-Sitemap: https://promptlens.com/sitemap.xml
+Sitemap: https://promptlens-eta.vercel.app/sitemap.xml

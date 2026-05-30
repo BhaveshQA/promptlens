@@ -1,169 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us – PromptLens</title>
-  <meta name="description" content="Get in touch with the PromptLens team. Submit prompts, report issues, or ask anything.">
-  <link rel="canonical" href="https://promptlens.com/contact.html">
-  <meta name="theme-color" content="#2d6a4f">
-  <meta property="og:title" content="Contact Us – PromptLens">
-  <meta property="og:url" content="https://promptlens.com/contact.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared.css?v=4">
-  <script src="shared.js?v=4" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact PromptLens – Submit a Prompt or Ask Anything</title>
+<meta name="description" content="Get in touch with PromptLens. Submit AI photography prompts, report issues, ask about advertising or partnerships.">
+<link rel="canonical" href="https://promptlens-eta.vercel.app/contact.html">
+<meta name="theme-color" content="#2d6a4f">
+<meta property="og:title" content="Contact PromptLens – Submit a Prompt or Ask Anything">
+<meta property="og:description" content="Get in touch with PromptLens. Submit AI photography prompts, report issues, ask about advertising or partnerships.">
+<meta property="og:url" content="https://promptlens-eta.vercel.app/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://promptlens-eta.vercel.app/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PromptLens – Free AI Photography Prompts">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact PromptLens – Submit a Prompt or Ask Anything">
+<meta name="twitter:description" content="Get in touch with PromptLens. Submit AI photography prompts, report issues, ask about advertising or partnerships.">
+<meta name="twitter:image" content="https://promptlens-eta.vercel.app/assets/images/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css?v=5">
+<script src="shared.js?v=5" defer></script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
-
-  <header>
-    <div class="header-inner">
-      <a href="index.html" class="logo" aria-label="PromptLens home">Prompt<span>Lens</span></a>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="index.html#trending">Trending</a>
-        <a href="index.html#essential">Essential</a>
-        <a href="blog.html">Blog</a>
-        <a href="about.html">About</a>
-        <a href="contact.html" class="nav-cta" aria-current="page">Submit Prompt</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" class="page-wrap">
-    <header class="page-hero">
-      <h1>Get in Touch</h1>
-      <p>Submit a prompt, report a problem, ask a question, or just say hello. We read every message.</p>
-    </header>
-
-    <div class="contact-layout">
-      <section class="form-card" aria-labelledby="form-heading">
-        <h2 id="form-heading">Send us a message</h2>
-        <p class="sub">We typically respond within 1–2 business days.</p>
-
-        <form id="contactForm" name="contact" method="post" action="thanks.html" data-netlify="true" data-static-form>
-          <input type="hidden" name="form-name" value="contact">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="given-name" autocomplete="given-name" required>
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="family-name" autocomplete="family-name">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
-          </div>
-
-          <div class="form-group">
-            <label for="subject">What's this about?</label>
-            <select id="subject" name="subject" required>
-              <option value="">Select a topic…</option>
-              <option>Submit a prompt for review</option>
-              <option>Report incorrect / broken prompt</option>
-              <option>Advertising enquiry</option>
-              <option>Partnership or collaboration</option>
-              <option>Technical issue with the site</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us more…" required minlength="10"></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-
-        <div class="form-success" id="successMsg" role="status" tabindex="-1">
-          <p aria-hidden="true" style="font-size:48px;margin-bottom:8px">✅</p>
-          <h3>Message sent!</h3>
-          <p>Thanks for reaching out. We'll get back to you within 1–2 business days at the email you provided.</p>
-        </div>
-      </section>
-
-      <aside class="info-sidebar" aria-label="Contact information">
-        <div class="info-card">
-          <h3>Contact Details</h3>
-          <div class="contact-item">
-            <div class="contact-icon ci-green" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="contact-text">
-              <strong>Email</strong>
-              <span><a href="mailto:hello@promptlens.com">hello@promptlens.com</a></span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon ci-orange" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-            </div>
-            <div class="contact-text">
-              <strong>Response time</strong>
-              <span>1–2 business days</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon ci-blue" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="contact-text">
-              <strong>Based in</strong>
-              <span>India · Remote team</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <h3>Common Questions</h3>
-          <div class="faq-item">
-            <strong>How do I submit a prompt?</strong>
-            <p>Use the form, select "Submit a prompt for review" and paste your prompt in the message box. We'll test it and feature it if it passes our quality bar.</p>
-          </div>
-          <div class="faq-item">
-            <strong>Do you accept advertising?</strong>
-            <p>Yes! Select "Advertising enquiry" and we'll send you our media kit.</p>
-          </div>
-          <div class="faq-item">
-            <strong>Can I use prompts commercially?</strong>
-            <p>All prompts on PromptLens are free to use for personal and commercial projects. No attribution required.</p>
-          </div>
-          <div class="faq-item">
-            <strong>How often do you add new prompts?</strong>
-            <p>We update every Monday with new trending and community-submitted prompts.</p>
-          </div>
-        </div>
-      </aside>
-    </div>
-
-    <div class="ad-inline" role="complementary" aria-label="Advertisement">
-      <div class="ad-label">Advertisement</div>
-      <div class="ad-placeholder" aria-hidden="true">728x90 ad slot - activate after approval</div>
-    </div>
-  </main>
-
-  <footer>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="about.html">About</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html" aria-current="page">Contact</a>
-      <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
-      <a href="index.html">Home</a>
-    </nav>
-    <p><small>© 2026 PromptLens · Built for AI photography creators</small></p>
-  </footer>
+<!-- content pending -->
 </body>
 </html>
