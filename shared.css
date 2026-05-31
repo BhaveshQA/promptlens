@@ -1588,3 +1588,246 @@ footer a:hover { color: var(--accent); }
   .info-grid { grid-template-columns: 1fr; }
   .policy-section { padding: 20px; }
 }
+/* ═══════════════════════════════════════════════
+   CARD IMAGE — added v5
+   Append this block to the END of shared.css
+   then change ?v=4 to ?v=5 in every HTML file
+═══════════════════════════════════════════════ */
+
+/* Card image container */
+.card-image {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+
+/* Standard card — image on top */
+.prompt-card:not(.featured) .card-image {
+  height: 200px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Featured card — image on left side */
+.prompt-card.featured {
+  flex-direction: row;
+}
+.prompt-card.featured .card-image {
+  width: 42%;
+  min-height: 260px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+/* Image itself */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.prompt-card:hover .card-image img {
+  transform: scale(1.04);
+}
+
+/* "Sample Output" badge on image */
+.sample-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.60);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+}
+.sample-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Hot / New badge on image */
+.card-image-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.card-image-badge.badge-hot {
+  background: var(--trending-light);
+  color: var(--trending);
+}
+.card-image-badge.badge-new {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* Prompt card flex direction fix */
+.prompt-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card body still grows */
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.prompt-card.featured .card-body {
+  padding: 24px 28px;
+  justify-content: center;
+}
+
+/* Responsive: featured card stacks on mobile */
+@media (max-width: 700px) {
+  .prompt-card.featured {
+    flex-direction: column;
+  }
+  .prompt-card.featured .card-image {
+    width: 100%;
+    min-height: 200px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   CARD IMAGE — added v5
+   Append this block to the END of shared.css
+   then change ?v=4 to ?v=5 in every HTML file
+═══════════════════════════════════════════════ */
+
+/* Card image container */
+.card-image {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--surface);
+}
+
+/* Standard card — image on top */
+.prompt-card:not(.featured) .card-image {
+  height: 200px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Featured card — image on left side */
+.prompt-card.featured {
+  flex-direction: row;
+}
+.prompt-card.featured .card-image {
+  width: 42%;
+  min-height: 260px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+/* Image itself */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.prompt-card:hover .card-image img {
+  transform: scale(1.04);
+}
+
+/* "Sample Output" badge on image */
+.sample-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.60);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  pointer-events: none;
+}
+.sample-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Hot / New badge on image */
+.card-image-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.card-image-badge.badge-hot {
+  background: var(--trending-light);
+  color: var(--trending);
+}
+.card-image-badge.badge-new {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* Prompt card flex direction fix */
+.prompt-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card body still grows */
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.prompt-card.featured .card-body {
+  padding: 24px 28px;
+  justify-content: center;
+}
+
+/* Responsive: featured card stacks on mobile */
+@media (max-width: 700px) {
+  .prompt-card.featured {
+    flex-direction: column;
+  }
+  .prompt-card.featured .card-image {
+    width: 100%;
+    min-height: 200px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+}
